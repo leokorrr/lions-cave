@@ -1,0 +1,134 @@
+.info-card {
+    box-shadow: 0 2px 1px rgba($color-black, 25%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    
+    width: calc(150px + (300 - 150) * ((100vw - 992px) / (1920 - 992)));
+    height: calc(150px + (300 - 150) * ((100vw - 992px) / (1920 - 992)));
+
+    @media (max-width: 991px) and (min-width: 768px) {
+        width: calc(177px + (232 - 177) * ((100vw - 768px) / (991 - 768)));
+        height: calc(177px + (232 - 177) * ((100vw - 768px) / (991 - 768)));
+    }
+
+    @media (max-width: 768px) {
+        box-shadow: 0 0 2px rgba($color-black, 25%);
+    }
+
+    @media (max-width: 767px) and (min-width: 500px) {
+        width: 50%;
+        height: calc(220px + (353 - 220) * ((100vw - 500px) / (767 - 500)));
+    }
+
+    @media (max-width: 499px) {
+        width: 100%;
+        height: calc(300px + (439 - 300) * ((100vw - 360px) / (499 - 360)));
+    }
+
+    &__main {
+        position: relative;
+        z-index: 2;
+        font-size: calc(36px + (64 - 36) * ((100vw - 992px) / (1920 - 992)));
+
+        @media (max-width: 991px) and (min-width: 768px) {
+            font-size: calc(40px + (52 - 40) * ((100vw - 768px) / (991 - 768)));
+        }
+
+        @media (max-width: 767px) and (min-width: 500px) {
+            font-size: calc(48px + (64 - 48) * ((100vw - 500px) / (767 - 500)));
+        }
+        
+        @media (max-width: 499px) {
+            font-size: calc(60px + (74 - 60) * ((100vw - 360px) / (499 - 360)));
+        }
+    }
+
+    &__secondary {
+        color: $color-grey;
+        font-style: italic;
+        font-weight: normal;
+        font-size: calc(16px + (28 - 16) * ((100vw - 992px) / (1920 - 992)));
+
+        @media (max-width: 991px) and (min-width: 768px) {
+            font-size: calc(17px + (22 - 17) * ((100vw - 768px) / (991 - 768)));
+        }
+
+        @media (max-width: 767px) and (min-width: 500px) {
+            font-size: calc(21px + (28 - 21) * ((100vw - 500px) / (767 - 500)));
+        }
+
+        @media (max-width: 499px) {
+            font-size: calc(26px + (32 - 26) * ((100vw - 360px) / (499 - 360)));
+        }
+    }
+
+    &__red-line-box {
+        position: absolute;
+        height: 10px;
+        width: calc(150px + (300 - 150) * ((100vw - 992px) / (1920 - 992)));
+        display: flex;
+        justify-content: center;
+        top: 0;
+        left:0;
+        margin-top: 43%;
+
+        @media (max-width: 991px) and (min-width: 768px) {
+            width: calc(177px + (232 - 177) * ((100vw - 768px) / (991 - 768)));
+            height: calc(177px + (232 - 177) * ((100vw - 768px) / (991 - 768)));
+        }
+
+        @media (max-width: 767px) and (min-width: 500px) {
+            width: calc(220px + (353 - 220) * ((100vw - 500px) / (767 - 500)));
+        }
+
+        @media (max-width: 499px) {
+            width: calc(300px + (439 - 300) * ((100vw - 360px) / (499 - 360)));
+            margin-top: 44%;
+        }
+
+
+        &--non-horizontal {
+            transform: rotate(-19deg);
+
+            @media (max-width: 991px) and (min-width: 768px) {
+                left: 31px;
+            }
+        }
+    }
+
+    &__red-line {
+        height: 12px;
+        height: calc(8px + (12 - 8) * ((100vw - 992px) / (1920 - 992)));
+        width: 80%;
+        background-color: $color-red;
+
+        @media (max-width: 991px) {
+            height: 8px;
+        }
+
+        @media (max-width: 768px) {
+            height: 12px;
+        } 
+    }
+
+    &__inner {
+
+        img {
+            width: calc(80px + (130 - 80) * ((100vw - 992px) / (1920 - 992)));
+            height: calc(80px + (130 - 80) * ((100vw - 992px) / (1920 - 992)));
+
+            @media (max-width: 767px) and (min-width: 500px) {
+                width: calc(100px + (120 - 90) * ((100vw - 500px) / (767 - 500)));
+                height: calc(100px + (120 - 90) * ((100vw - 500px) / (767 - 500)));
+            }
+
+            @media (max-width: 499px) {
+                width: calc(100px + (150 - 100) * ((100vw - 360px) / (499 - 360)));
+                height: calc(100px + (150 - 100) * ((100vw - 360px) / (499 - 360)));
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.other-project {      
+    font-size: calc(32px + (36 - 32) * ((100vw - 992px) / (1920 - 992)));
+
+    margin-bottom: calc(25px + (35 - 25) * ((100vw - 992px) / (1920 - 992)));
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+}
+
+.annotation {
+    font-size: 18px;
+    margin-top: 70px;
+    padding-bottom: 50px;
+}

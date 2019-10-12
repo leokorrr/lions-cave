@@ -1,0 +1,139 @@
+.header {
+    margin: 0;
+}
+
+.header-underlined {
+    width: fit-content;
+
+    &--name {
+        width: 100%;
+        margin-bottom: 90px;
+    }
+
+    &--name-desktop {
+        @media (max-height: 640px) {
+            display: none;
+        }
+    }
+
+    &--page-title {
+        margin-left: calc(39px + (95 - 39) * ((100vw - 1620px) / (1920 - 1620)));
+
+        @media(max-width: 1620px) {
+            margin-left: 39px;
+        }
+    }
+
+    &__text {
+        font-weight: bold;
+        
+        &--name {
+            font-size: 41px;
+            text-align: center;
+        }
+
+        &--page-title {
+            font-size: calc(56px + (64 - 56) * ((100vw - 992px) / (1920 - 992)));
+
+            @media (max-width: 599px) {
+                font-size: 45px;
+            }
+
+        }
+
+        &--subheader {
+            font-size: 48px;
+            
+            @media (max-width: 599px) {
+                font-size: 36px;
+            }
+        }
+    }
+
+    &__underline {
+      background-color: $color-red;
+      width: 0;
+      margin-left: -5%;
+      animation: underline;
+      animation-duration: 1.4s;
+      animation-delay: .6s;
+      animation-fill-mode: forwards;
+
+      &--name {
+        margin-top: -21px;
+        height: 21px;
+        width: 0;
+        margin-left: 0;
+        animation: underline--name;
+        animation-duration: 1.7s;
+        animation-fill-mode: forwards;
+      }
+
+      &--page-title {
+          margin-top: calc((28px + (32 - 28) * ((100vw - 992px) / (1920 - 992))) * -1);
+          height: calc(28px + (32 - 28) * ((100vw - 992px) / (1920 - 992)));
+
+      }
+
+      &--subheader {
+          margin-top: -24px;
+          height: 24px;
+
+          @media (max-width: 599px) {
+            margin-top: -18px;
+            height: 18px;
+        }
+      }
+
+      @keyframes underline {
+          from { width: 0% }
+          to { width: 110% }
+      }
+
+      @keyframes underline--name {
+          from { width: 0% }
+          to { width: 100% }
+      }
+    }
+  }
+
+  .text {
+      margin: 0;
+
+      &--big {
+          font-weight: bold;
+          font-style: italic;
+          font-size: calc(36px + (52 - 36) * ((100vw - 992px) / (1920 - 992)));
+
+          @media (max-width: 599px) {
+            font-size: 32px;
+          }
+      }
+
+      &--description {
+          @media (max-width: 991px) {
+              font-size: 40px;
+          }
+
+          @media (max-width: 499px) {
+              font-size: 38px;
+          }
+      }
+  }
+
+  .link {
+      color: black;
+      text-decoration: none;
+
+      &:visited {
+          color: black;
+      }
+
+      &:active {
+          color: black;
+      }
+
+      &:focus {
+          color: black;
+      }
+  }
