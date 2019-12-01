@@ -5,57 +5,27 @@
             <div class="header-underlined__underline header-underlined__underline--page-title"></div>
         </div>
         <div class="project-cards-box">
-            <div class="project-cards">
-                <div class="project-card">
-                    <a href="http://centuriesproject.000webhostapp.com/" class="link">
+            <div class="project-cards" v-if="projects && projects.length">
+                <div class="project-card" v-for="(project, index) of projects" v-bind:key="index">
+                    <a :href="project.project_link" class="link">
                         <div class="project-card__cover">
-                            <span class="project-card__cover--centuries">C</span>
+                            <span v-bind:style={color:project.project_color}>{{project.project_title.charAt(0)}}</span>
                         </div>
                         <hr class="project-card__wrapper">
                         <div class="project-card__info">
-                            <div class="header project-card__header">Centuries</div>
-                            <p class="text project-card__description">Small project about Czech's castles</p>
+                            <div class="header project-card__header">{{project.project_title}}</div>
+                            <p class="text project-card__description">{{project.project_description}}</p>
                             <div class="project-card__action">
                                 <span class="red">See it live!</span>
+                                <span class="project-card__github-logo">
+                                    <a :href="project.project_github_link" class="link">
+                                        <img src="../img/github-logo.svg" alt="github-logo">
+                                    </a>
+                                </span>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="project-card">
-                    <a href="http://simplecompany.000webhostapp.com/" class="link">
-                    <div class="project-card__cover">
-                        <span class="project-card__cover--simple-company">S</span>
-                    </div>
-                    <hr class="project-card__wrapper">
-                    <div class="project-card__info">
-                    <div class="header project-card__header">Simple Company</div>
-                        <p class="text project-card__description">Simple project for Simple company. Designed by simple guy</p>
-                        <div class="project-card__action">
-                            <span class="red">See it live!</span>
-                        </div>
-                    </div>
-                    </a>
-                </div>
-                <div class="project-card">
-                    <a href="https://devincubator-5eeb9.firebaseapp.com/" class="link">
-                    <div class="project-card__cover">
-                        <span class="project-card__cover" style="color: black">I</span>
-                    </div>
-                    <hr class="project-card__wrapper">
-                    <div class="project-card__info">
-                    <div class="header project-card__header">devIncubator</div>
-                        <p class="text project-card__description">Programmer's community of Pomeranian University</p>
-                        <div class="project-card__action">
-                            <span class="red">See it live!</span>
-                        </div>
-                    </div>
-                    </a>
-                </div>
-                <!-- <div class="project-card project-card--soon">
-                    <div>
-                        <span class="bold">Comming soon...</span>
-                    </div>
-                </div> -->
             </div>
         </div>
         <div class="header-underlined header-underlined--page-title">
@@ -63,12 +33,41 @@
             <div class="header-underlined__underline header-underlined__underline--subheader"></div>
         </div>
         <div class="other-projects-box">
-            <div class="other-projects">
-                    <p class="text other-project"><span class="bold">UNICEF</span> projects</p>
-                    <p class="text other-project"><span class="bold">ESSILOR</span> projects</p>
-                    <p class="text other-project"><span class="bold">INRA</span> projects</p>
-                    <p class="text annotation"> and <span class="bold">others</span>, I'm not allowed to tell... tsss...</p>
+            <div class="other-projects" v-if="projects && projects.length">
+                    <p class="text other-project" v-for="(firm, index) of firms" v-bind:key="index"><span class="bold other-project__title">{{firm.firm_title}}</span> projects</p>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+    name: 'Projects',
+    data() {
+        return {
+            projects: [],
+            firms: [],
+            apiLink: process.env.VUE_APP_BACKEND_URL
+        }
+    },
+    created() {
+        axios.get(`${this.apiLink}/api/projects`)
+            .then(res => {
+                this.projects = res.data
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        
+        axios.get(`${this.apiLink}/api/firms`)
+            .then(res => {
+                this.firms = res.data
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+</script>

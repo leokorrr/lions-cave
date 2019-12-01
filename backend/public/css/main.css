@@ -1,0 +1,20 @@
+.table-layout__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.project-table__modal-header {
+    display: flex;
+    justify-content: space-between
+}
+
+.menu {
+    padding: 20px 40px;
+    font-size: 16px;
+}
+
+.menu > a {
+    padding-right: 10px;
+}

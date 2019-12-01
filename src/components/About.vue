@@ -20,7 +20,7 @@
                         <div class="info-card__red-line"></div>
                     </div>
                     <div class="info-card__inner">
-                        <p class="text bold info-card__main">1Y2M</p>
+                        <p class="text bold info-card__main"><span>{{timeYear}}Y</span> <span v-if="timeMonth !== 0">{{timeMonth}}M</span></p>
                         <p class="text info-card__secondary">in the field</p>
                     </div>
                 </div>
@@ -51,3 +51,31 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    name: 'posts',
+    data() {
+        return {
+            time: null,
+            timeYear: null,
+            timeMonth: null
+        }
+    },
+    methods: {
+        timeCounter(dateStarted) {
+            dateStarted = new Date(dateStarted);
+            let today = new Date()
+
+            let time = Math.ceil((Math.abs(today.getTime() - dateStarted.getTime()))/(1000*3600*24*30));
+            this.timeYear = Math.floor(time/12)
+            this.timeMonth = time - this.timeYear*12;
+            console.log(time)
+        }
+    },
+    beforeMount() {
+        this.timeCounter('07/01/2018')
+    }
+
+}
+</script>

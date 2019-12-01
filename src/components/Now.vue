@@ -5,26 +5,37 @@
             <div class="header-underlined__underline header-underlined__underline--page-title"></div>
         </div>
         <div class="posts-box">
-            <div class="posts">
-                <div class="post">
-                    <p class="text text--big">“Trying to go back to <span class="red">gym</span>”</p>
+            <div class="posts" v-if="posts && posts.length">
+                <div class="post" v-for="(post, index) of posts" v-bind:key="index">
+                    <p class="text text--big">“{{post.post_inner}}”</p>
                     <div class="post__date">
-                        <span>- 20.08.2019</span>
-                    </div>
-                </div>
-                <div class="post">
-                    <p class="text text--big">“Listening <span class="red">My sweet emptiness</span> by pyrokinesis”</p>
-                    <div class="post__date">
-                        <span>- 19.08.2019</span>
-                    </div>
-                </div>
-                <div class="post">
-                    <p class="text text--big">“Working on my <span class="red">Engineer's Thesis</span>. Hope to finish it before deadline xD ”</p>
-                    <div class="post__date">
-                        <span>- 12.08.2019</span>
+                        <span>- {{post.post_date}}</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+    name: 'posts',
+    data() {
+        return {
+            posts: [],
+            apiLink: process.env.VUE_APP_BACKEND_URL
+        }
+    },
+    created() {
+        axios.get(`${this.apiLink}/api/posts`)
+            .then(res => {
+                this.posts = res.data
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+</script>

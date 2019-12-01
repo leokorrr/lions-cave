@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="table-layout__title">
+        <h2>Projects</h2>
+        <div><button class="btn btn-primary" data-toggle="modal" data-target="#projectModal">Add</button></div>
+    </div>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Short desc</th>
+            <th scope="col">Project link</th>
+            <th scope="col">Github link</th>
+            <th scope="col">Color</th>
+            <th scope="col">Date posted</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each projects}}
+            <tr>
+                <th scope="row">{{incremented @index}}</th>
+                <td>{{project_title}}</td>
+                <td>{{project_description}}</td>
+                <td><a :href="{{project_link}}">{{project_link}}</a></td>
+                <td><a :href="{{project_github_link}}" class="">{{project_github_link}}</a></td>
+                <td style="color:{{project_color}}">{{project_color}}</td>
+                <td>{{project_date}}</td>
+                <td>
+                    <form action="/delete-project" method="POST">
+                        <div class="form-group sr-only">
+                            <label for="projectDescription">ID</label>
+                            <input type="text" class="form-control"  name="projectId" placeholder="Enter project title" value="{{_id}}">
+                        </div>
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+    </table>
+
+    <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header project-table__modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New project</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/projects" method="POST">
+                        <div class="form-group">
+                            <label for="projectTitle">Title</label>
+                            <input type="text" class="form-control" id="projectTitle" name="projectTitle" placeholder="Enter project title">
+                        </div>
+                        <div class="form-group">
+                            <label for="projectDescription">Short description</label>
+                            <input type="text" class="form-control" id="projectDescription" name="projectDescription" placeholder="Enter project title">
+                        </div>
+                        <div class="form-group">
+                            <label for="projectDescription">Project link</label>
+                            <input type="text" class="form-control" id="projectLink" name="projectLink" placeholder="Enter project link">
+                        </div>
+                        <div class="form-group">
+                            <label for="projectDescription">Github link</label>
+                            <input type="text" class="form-control" id="projectGithubLink" name="projectGithubLink" placeholder="Enter project Github link">
+                        </div>
+                        <div class="form-group">
+                            <label for="projectColor">Color</label>
+                            <input type="text" class="form-control" id="projectColor" name="projectColor" placeholder="Enter project color">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "lionscave-4b38f"
+    "default": "lionscave-4b38f",
+    "staging": "admin-lions-cave"
   }
 }
